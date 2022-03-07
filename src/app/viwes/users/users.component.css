@@ -1,0 +1,35 @@
+.bg{
+    background-image: url(src/assets/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 550px;
+    text-align: center;
+}
+ .botn{
+  
+    text-align: center;
+   
+}
+ .botn .one{
+    background-color: rgb(142, 119, 84);
+    border: 2px solid;
+}
+.botn a{
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid;
+    padding: 18px 25px;
+    font-weight: bolder;
+    border-radius: 4px;
+    margin: 0px 5px ;
+    transition: background-color 0.4 ;
+    margin-top: 150px;
+}
+.botn a:hover{
+    background-color: #fff;
+    color: #000;
+}
+h1{
+    color:  #fff;
+  padding-top: 200px;
+}

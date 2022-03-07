@@ -1,0 +1,63 @@
+<form #newsForm="ngForm" (ngSubmit)="updatenews(newsForm.value)" class="container mt-5">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control "
+        id="title"
+        name="title"
+        ngModel
+        required
+        #title="ngModel"
+        [(ngModel)]=news.title
+        placeholder="Enter title"
+      />
+      <div class="errors d-flex justify-content-center" 
+      *ngIf="title.touched && title.invalid">
+  
+      <div *ngIf="title.errors?.['required']">
+          *Title is required*
+      </div>
+      </div>
+      
+    </div>
+    
+  
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control "
+        id="description"
+        name="description"
+        ngModel
+        required
+        [(ngModel)]="news.description"
+        #description = 'ngModel'
+        placeholder="Enter description"
+      />
+      <div class="errors d-flex justify-content-center" 
+      *ngIf="description.touched && description.invalid">
+  
+      <div *ngIf="description.errors?.['required']">
+          *Description is required*
+      </div>
+      </div>
+      
+    </div>
+  
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input " id="completed" 
+      name="completed" ngModel
+      [(ngModel)]="news.completed"
+       />
+      <label class="form-check-label " for="completed">Completed</label>
+    </div>
+     <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple name="image" 
+        [(ngModel)]="news.image"  (change)="handelupload($event)">
+      </div>
+  
+    <button type="submit" class="btn btn-primary">update</button>
+  </form>

@@ -1,0 +1,67 @@
+<form #contactForm="ngForm" (ngSubmit)="signUp(contactForm.value)" class="container mt-3 mb-5 border border-info">
+    <h2 class="mt-2">signin</h2>
+    <div class="mb-3">
+        <label for="name" class="form-label"><span><i class="fa fa-user" aria-hidden="true"></i></span> Name</label>
+        <input type="text" class="form-control " id="name" name="name" ngModel #name="ngModel" required />
+        <div class=" errors d-flex justify-content-center" *ngIf="name.touched && name.invalid">
+            <div *ngIf="name.errors?.['required']">
+                *Name is required*
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="age" class="form-label"><span><i class="fa fa-calendar-o" aria-hidden="true"></i></span> Age</label>
+        <input type="number" class="form-control " id="age" name="age" ngModel (focus)="changeAge()" />
+        <div class="errors d-flex justify-content-center" *ngIf="invalidAge">
+            *{{msg}}*
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label"><span><i class="fa fa-envelope-o" aria-hidden="true"></i></span> Email</label>
+        <input type="text" class="form-control " id="email" name="email" ngModel #email="ngModel" required email
+            (focus)="changeEmail()" />
+        <div class=" errors d-flex justify-content-center" *ngIf="email.touched && email.invalid">
+            <div *ngIf="email.errors?.['required']">
+                *Email is required*
+            </div>
+            <div *ngIf="email.errors?.['email']">
+                *Please enter valid email*
+            </div>
+        </div>
+
+        <div class="errors d-flex justify-content-center" *ngIf="invalidEmail">
+            *Sorry email already in use.. try another one*
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label"><span><i class="fa fa-key" aria-hidden="true"></i></span> Password</label>
+        <input type="password" class="form-control " id="password" name="password" ngModel #password="ngModel" required
+            minlength="6" (focus)="changePassword()" />
+        <div class=" errors d-flex justify-content-center" *ngIf="password.touched && password.invalid">
+            <div *ngIf="password.errors?.['required']">
+                *Password is required*
+            </div>
+            <div *ngIf="password.errors?.['minlength']">
+                *Password minlength is {{password.errors?.['minlength'].requiredLength}}*
+            </div>
+
+        </div>
+        <div class="errors d-flex justify-content-center" *ngIf="invalidPassword">
+            *{{msgPassword}}*
+        </div>
+    </div>
+
+    
+    <div class="mb-3">
+        <label for="phone" class="form-label"><span><i class="fa fa-mobile" aria-hidden="true"></i></span> phone</label>
+        <input type="text" class="form-control " id="phone" name="phone" ngModel  />
+      
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="contactForm.invalid">Submit</button>
+</form>

@@ -1,0 +1,54 @@
+<form [formGroup]="newsForm" (ngSubmit)="addnews(newsForm.value)" class="container mt-5">
+    <div class="mb-3">
+      <label for="title" class="form-label ">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        formControlName="title"
+        placeholder="Enter title"
+      />
+      <div class="errors d-flex justify-content-center" 
+      *ngIf="myValues['title'].touched && myValues['title'].invalid">
+  
+      <div *ngIf="myValues['title'].errors?.['required']">
+          *Title is required*
+      </div>
+      </div>
+      
+    </div>
+    
+  
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control "
+        id="description"
+        formControlName="description"
+        placeholder="Enter description"
+      />
+      <div class="errors d-flex justify-content-center" 
+      *ngIf="myValues['description'].touched && myValues['description'].invalid">
+  
+      <div *ngIf="myValues['description'].errors?.['required']">
+          *Description is required*
+      </div>
+      </div>
+      
+    </div>
+  
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="completed" 
+      formControlName="completed" />
+      <label class="form-check-label " for="completed">Completed</label>
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple name="image"
+        formControlName="image" (change)="handelupload($event)">
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">addnews</button>
+  </form>
+  
